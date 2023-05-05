@@ -15,13 +15,13 @@ We will need two virtual machines inside of VirtualBox.First machine will be the
 Virtual machines have a NAT adapter by default but in order to **assign IP addresses** to these machines we will need to add a **host-only adapter** manually.
 Let's start by creating a new virtual machine.
 
-![Add Virtual Network](screenshots/ip_addresses_setup/add_virtual_network.png)
+![Add Virtual Network](screenshots/add_virtual_network.png)
 
 And don't forget to enable the *DHCP Server*.
 Now it's time to connect these virtual machines to our new virtual network.
 Go to the *Settings* of each of the virtual machines and under *Network* enable a second adapter :
 
-![Connect Virtual Machines to Virtual Network](screenshots/ip_addresses_setup/connect_machine_to_virtual_network.png)
+![Connect Virtual Machines to Virtual Network](screenshots/connect_machine_to_virtual_network.png)
 Specify the type of the adapter (*host-only adapater*) and the virtual network to connect to (newly created).
 
 We can check the IP addresses of all three machines by running `hostname -I` in each one.
@@ -33,7 +33,7 @@ Now that we added ip addresses to the virtual machines, we will start by setting
 And *open a new terminal for changes to take effect.*
 *We can check the hostname of a machine by running the command : `hostname`*
 * Client machine      
-![Change Client machine hostname](screenshots/ip_addresses_setup/change_client_hostname.png)
+![Change Client machine hostname](screenshots/change_client_hostname.png)
 * KDC machine       
 ![Change KDC hostname](screenshots/ip_addresses_setup/change_kdc_hostname.png)
 Next, we will be mapping these hostnames to their corresponding IP addresses on all three machines using */etc/hosts* file. <br> 
@@ -50,8 +50,8 @@ Once the setup is done, we can check if everything is working fine by using the 
 
 This an example in the client machine :
 
-![Checking network with nslookup](screenshots/ip_addresses_setup/nslookup_in_client_machine.png)
-![Checking network with ping](screenshots/ip_addresses_setup/ping_in_client_machine.png)
+![Checking network with nslookup](screenshots/nslookup_in_client_machine.png)
+![Checking network with ping](screenshots//ping_in_client_machine.png)
 
 ### Key Distribution Center Machine Configuration
 
@@ -64,13 +64,13 @@ Following are the packages that need to installed on the KDC machine : <br>
 During the installation, we will be asked for configuration of :
 
  * the realm : 'UC.TN' (must be *all uppercase*)
-![Realm](screenshots/kdc_machine_config/realm.png)
+![Realm](screenshots/realm.png)
 
  * the Kerberos server : 'kdc.uc.tn'
-![Kerberos server](screenshots/kdc_machine_config/kerberos_server.png)
+![Kerberos server](screenshots/kerberos_server.png)
 
  * the administrative server : 'kdc.uc.tn'
-![Administrative server](screenshots/kdc_machine_config/administrative_server.png)
+![Administrative server](screenshots/administrative_server.png)
  
 ***Realm** is a logical network, similar to a domain, that all the users and servers sharing the same Kerberos database belong to.* 
 
@@ -93,14 +93,14 @@ sudo krb5_newrealm
     kadmin.local:  add_principal root/admin
 ```
 
-![Create Kerberos admin user](screenshots/kdc_machine_config/create_kerberos_admin_user.png)
+![Create Kerberos admin user](screenshots/create_kerberos_admin_user.png)
 
 [kadmin.local] is a KDC database administration program. We used this tool to create a new principal in the UC.TN realm (`add_principal`).
 
 We can check if the user *root/admin* was successfully created by running the command : `kadmin.local: list_principals`. We should see the 'root/admin@UC.TN' principal listed along with other default principals.
 
 
-![Check admin principal](screenshots/kdc_machine_config/check_admin_principal.png)
+![Check admin principal](screenshots/check_admin_principal.png)
 
 
 Next, we need to grant all access rights to the Kerberos database to admin principal *root/admin* using the configuration file */etc/krb5kdc/kadm5.acl* . <br>
@@ -119,7 +119,7 @@ Once the admin user who manages principals is created, we need to create the pri
     kadmin.local:  add_principal utilisateur
 ```
 
-![Create a principal for the client](screenshots/kdc_machine_config/create_client_principal.png)
+![Create a principal for the client](screenshots/create_client_principal.png)
 
 We need to add kadmin/admin to the keytab file .
 
