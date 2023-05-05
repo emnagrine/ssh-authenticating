@@ -24,7 +24,7 @@ Go to the *Settings* of each of the virtual machines and under *Network* enable 
 ![Connect Virtual Machines to Virtual Network](screenshots/connect_machine_to_virtual_network.png)
 Specify the type of the adapter (*host-only adapater*) and the virtual network to connect to (newly created).
 
-We can check the IP addresses of all three machines by running `hostname -I` in each one.
+We can check the IP addresses of all  machines by running `hostname -I` in each one.
 
 In my case :
 * Client machine ip address is **192.168.56.104**
@@ -39,7 +39,7 @@ And *open a new terminal for changes to take effect.*
 Next, we will be mapping these hostnames to their corresponding IP addresses on all three machines using */etc/hosts* file. <br> 
   `sudo vi /etc/hosts`
   
-Now, we should set below information to */etc/hosts* **for all three machines** :
+Now, we should set below information to */etc/hosts* **for all machines** :
 
     <KDC_IP_ADDRESS>    kdc.uc.tn       kdc
     <CLIENT_ADDRESS>    client.uc.tn    client
