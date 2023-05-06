@@ -153,8 +153,6 @@ We have to add the service principal to our keytab .
 
 We will be asked to provide a password for this user.
 
-![Add user](screenshots/add_user.png)
-
 Now we will access our user by ruuning:
 `su -l utilisateur`
 
@@ -193,6 +191,8 @@ Then we save and  restart.
  add user utilisateur
  ```
 We will be asked to provide a password for this user.
+
+![Add user](screenshots/create_user.png)
 
 Now we will access our user by ruuning:
 
