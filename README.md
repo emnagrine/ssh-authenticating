@@ -35,7 +35,7 @@ And *open a new terminal for changes to take effect.*
 * Client machine      
 ![Change Client machine hostname](screenshots/change_client_hostname.png)
 * KDC machine       
-![Change KDC hostname](screenshots/ip_addresses_setup/change_kdc_hostname.png)
+![Change KDC hostname](screenshots/change_kdc_hostname.png)
 Next, we will be mapping these hostnames to their corresponding IP addresses on all three machines using */etc/hosts* file. <br> 
   `sudo vi /etc/hosts`
   
@@ -45,13 +45,13 @@ Now, we should set below information to */etc/hosts* **for all machines** :
     <CLIENT_ADDRESS>    client.uc.tn    client
 
 
-![Hostname mapping](screenshots/ip_addresses_setup/hostnames_mapping.png)
+![Hostname mapping](screenshots/hostnames_mapping.png)
 Once the setup is done, we can check if everything is working fine by using the `nslookup` command to **query the DNS** to obtain the mapping we just did and the `ping` command.
 
 This an example in the client machine :
 
 ![Checking network with nslookup](screenshots/nslookup_in_client_machine.png)
-![Checking network with ping](screenshots//ping_in_client_machine.png)
+![Checking network with ping](screenshots/ping_in_client_machine.png)
 
 ### Key Distribution Center Machine Configuration
 
